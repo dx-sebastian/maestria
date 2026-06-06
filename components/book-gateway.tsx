@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic'
 import { useCallback, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { SITE } from '@/data/diario'
 import { BookSpread } from '@/components/book-spread'
 import { EASE_PAPER } from '@/lib/motion'
 
@@ -86,7 +85,7 @@ export function BookGateway({ onStart }: { onStart: () => void }) {
         </AnimatePresence>
       </div>
 
-      {/* minimal affordance + a single line of academic provenance */}
+      {/* minimal affordance */}
       <AnimatePresence>
         {phase !== 'reading' ? (
           <motion.div
@@ -110,9 +109,6 @@ export function BookGateway({ onStart }: { onStart: () => void }) {
             ) : (
               <span className="font-hand text-2xl text-ink-soft">abriendo…</span>
             )}
-            <p className="max-w-xl font-sans text-[0.62rem] uppercase leading-relaxed tracking-[0.22em] text-ink-faint">
-              {SITE.school} · {SITE.seminar}
-            </p>
           </motion.div>
         ) : null}
       </AnimatePresence>

@@ -85,11 +85,7 @@ export function DayFooter() {
                 {day.index}
               </span>
               <span className="font-heading text-lg font-semibold leading-none text-[oklch(0.97_0.02_88)]">
-                {day.label}
-              </span>
-              <span className="h-3 w-px" style={{ background: `color-mix(in oklch, ${accent} 60%, transparent)` }} />
-              <span className="hidden font-sans text-[0.62rem] uppercase tracking-[0.2em] text-[oklch(0.9_0.02_88/0.78)] sm:inline">
-                {day.themeFull}
+                {day.heading}
               </span>
               {/* shimmer line */}
               <motion.span

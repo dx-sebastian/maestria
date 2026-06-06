@@ -5,8 +5,6 @@ import { motion, useReducedMotion } from 'motion/react'
 import Image from 'next/image'
 import type { DiaryDay } from '@/data/diario'
 import { Reveal } from '@/components/reveal'
-import { PullQuote } from '@/components/pull-quote'
-import { MarginNote } from '@/components/margin-note'
 import { assetPath } from '@/lib/assets'
 import { stagger, fadeUp, fadeUpSmall } from '@/lib/motion'
 
@@ -50,7 +48,6 @@ function Climatic() {
 
 export function DayChapter({ day }: { day: DiaryDay }) {
   const accent = day.accent
-  const pullAfter = Math.ceil(day.movements.length / 2) - 1
 
   return (
     <article
@@ -90,20 +87,15 @@ export function DayChapter({ day }: { day: DiaryDay }) {
             </span>
 
             <Reveal variants={fadeUpSmall}>
-              <p className="eyebrow text-[oklch(0.9_0.04_88)] text-shadow-soft">{day.theme}</p>
+              <p className="eyebrow text-[oklch(0.9_0.04_88)] text-shadow-soft">Diario Lúdico:</p>
             </Reveal>
             <Reveal variants={fadeUp} delay={0.05}>
               <h2
                 id={`${day.id}-title`}
                 className="mt-4 font-heading text-[clamp(3.4rem,8vw,7rem)] font-semibold leading-[0.92] tracking-[-0.03em] text-[oklch(0.98_0.02_88)] text-shadow-deep"
               >
-                {day.label}
+                {day.heading}
               </h2>
-            </Reveal>
-            <Reveal variants={fadeUp} delay={0.12}>
-              <p className="mt-5 max-w-2xl font-heading text-xl font-light leading-snug text-[oklch(0.95_0.03_88)] text-shadow-soft md:text-[1.55rem]">
-                {day.themeFull}
-              </p>
             </Reveal>
           </div>
         </div>
@@ -111,72 +103,37 @@ export function DayChapter({ day }: { day: DiaryDay }) {
         {/* reading over the day's atmosphere */}
         <div className="px-6 pb-28">
           <div className="mx-auto max-w-[47rem] rounded-[1.6rem] border border-white/10 bg-[oklch(0.14_0.02_60/0.66)] px-7 py-14 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.8)] backdrop-blur-2xl md:px-14 md:py-16">
-            {day.movements.map((mv, mi) => (
-              <div key={mi} className={mi > 0 ? 'mt-16' : undefined}>
-                <Reveal variants={fadeUpSmall} className="mb-7">
-                  <div className="flex items-baseline gap-4">
-                    <span className="font-heading text-xl font-semibold" style={{ color: 'color-mix(in oklch, white 30%, var(--accent))' }}>
-                      {ROMAN[mi]}
-                    </span>
-                    <span className="h-px flex-1" style={{ background: 'color-mix(in oklch, var(--accent) 50%, transparent)' }} />
-                    <span className="font-sans text-[0.7rem] uppercase tracking-[0.22em] text-[oklch(0.88_0.02_88/0.75)]">
-                      {mv.title}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 font-heading text-[1.7rem] font-semibold leading-tight tracking-[-0.01em] text-[oklch(0.97_0.02_88)]">
-                    {mv.scene}
-                  </h3>
-                </Reveal>
-
-                <motion.div
-                  variants={stagger(0.1)}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.12 }}
-                  className="reading reading-dark"
+            <Reveal variants={fadeUpSmall} className="mb-8">
+              <div className="flex items-baseline gap-4">
+                <span
+                  className="font-heading text-xl font-semibold"
+                  style={{ color: 'color-mix(in oklch, white 30%, var(--accent))' }}
                 >
-                  {mv.paragraphs.map((p, pi) => (
-                    <motion.p key={pi} variants={fadeUp} className={mi === 0 && pi === 0 ? 'dropcap' : undefined}>
-                      {p}
-                    </motion.p>
-                  ))}
-                </motion.div>
-
-                {mi === pullAfter ? (
-                  <PullQuote accent={'color-mix(in oklch, white 35%, var(--accent))'} dark>
-                    {day.pullQuote}
-                  </PullQuote>
-                ) : null}
+                  {ROMAN[day.index - 1]}
+                </span>
+                <span
+                  className="h-px flex-1"
+                  style={{ background: 'color-mix(in oklch, var(--accent) 50%, transparent)' }}
+                />
+                <span className="font-sans text-[0.7rem] uppercase tracking-[0.22em] text-[oklch(0.88_0.02_88/0.75)]">
+                  {day.heading}
+                </span>
               </div>
-            ))}
-
-            {day.note ? (
-              <div className="mt-14 flex justify-center">
-                <MarginNote label={day.note.label} text={day.note.text} accent={accent} />
-              </div>
-            ) : null}
-
-            <Reveal variants={fadeUpSmall} className="mt-16">
-              <p className="eyebrow mb-4 text-[oklch(0.85_0.02_88/0.6)]">En esta jornada</p>
-              <ul className="flex flex-wrap gap-2.5">
-                {day.concepts.map((c) => (
-                  <li
-                    key={c}
-                    className="rounded-full border px-3.5 py-1.5 font-sans text-[0.8rem] text-[oklch(0.92_0.02_88/0.85)]"
-                    style={{ borderColor: 'color-mix(in oklch, var(--accent) 55%, transparent)' }}
-                  >
-                    {c}
-                  </li>
-                ))}
-              </ul>
             </Reveal>
 
-            <Reveal variants={fadeUp} className="mt-14 text-center">
-              <span className="mx-auto mb-7 block h-px w-16" style={{ background: 'color-mix(in oklch, white 30%, var(--accent))' }} />
-              <p className="mx-auto max-w-2xl font-heading text-[1.45rem] font-medium leading-[1.5] tracking-[-0.01em] text-[oklch(0.96_0.02_88)] md:text-[1.7rem]">
-                {day.close}
-              </p>
-            </Reveal>
+            <motion.div
+              variants={stagger(0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.12 }}
+              className="reading reading-dark"
+            >
+              {day.paragraphs.map((p, pi) => (
+                <motion.p key={pi} variants={fadeUp} className={pi === 0 ? 'dropcap' : undefined}>
+                  {p}
+                </motion.p>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>

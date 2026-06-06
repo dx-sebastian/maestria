@@ -1,6 +1,6 @@
 'use client'
 
-import { SITE, DIARY } from '@/data/diario'
+import { DIARY } from '@/data/diario'
 import { Reveal } from '@/components/reveal'
 import { fadeUpSmall } from '@/lib/motion'
 
@@ -11,16 +11,7 @@ export function Colophon() {
       <div className="relative z-[1] mx-auto max-w-[88rem] px-10 py-16">
         <Reveal variants={fadeUpSmall} className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-hand text-3xl text-ink">Diario Lúdico</p>
-            <p className="mt-2 max-w-md font-body text-base leading-relaxed text-ink-soft">
-              {SITE.tagline}. Diario de campo de {SITE.author}, {SITE.role.toLowerCase()}.
-            </p>
-            <p className="mt-3 max-w-md font-sans text-[0.7rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-ink-soft">
-              {SITE.school} · {SITE.city}
-            </p>
-            <p className="mt-1 max-w-md font-sans text-[0.7rem] uppercase leading-relaxed tracking-[0.18em] text-ink-faint">
-              {SITE.seminar}
-            </p>
+            <p className="font-hand text-3xl text-ink">Diario Lúdico:</p>
           </div>
 
           <button
@@ -49,12 +40,11 @@ export function Colophon() {
                   className="transition-colors hover:text-ink"
                   style={{ ['--tw-text-opacity' as string]: '1' }}
                 >
-                  {String(d.index).padStart(2, '0')} · {d.label}
+                  {d.heading}
                 </button>
               </li>
             ))}
           </ul>
-          <p className="font-sans text-xs uppercase tracking-[0.18em]">{SITE.program}</p>
         </Reveal>
       </div>
     </footer>

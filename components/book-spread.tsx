@@ -10,7 +10,7 @@ import {
   type PanInfo,
 } from 'motion/react'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { PRESENTATION, SITE } from '@/data/diario'
+import { PRESENTATION } from '@/data/diario'
 import { EASE_PAPER } from '@/lib/motion'
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -81,23 +81,8 @@ function TitleFace() {
     <div className="flex h-full flex-col items-center justify-center text-center">
       <p className="eyebrow text-ochre">{PRESENTATION.kicker}</p>
       <h3 className="mt-5 font-heading text-3xl font-semibold leading-[1.05] tracking-[-0.02em] text-ink">
-        {SITE.title}
+        {PRESENTATION.title}
       </h3>
-      <p className="mt-3 font-heading text-lg font-light italic text-ink-soft">
-        {SITE.tagline}
-      </p>
-      <span className="my-6 h-px w-14 bg-ochre/60" />
-      <p className="font-hand text-3xl text-ink">{SITE.author}</p>
-      <p className="mt-1 font-sans text-[0.64rem] uppercase tracking-[0.22em] text-ink-faint">
-        {SITE.role}
-      </p>
-      <p className="mt-7 max-w-[15rem] font-sans text-[0.64rem] font-semibold uppercase leading-relaxed tracking-[0.18em] text-ink-soft">
-        {SITE.school}
-        <span className="block font-normal text-ink-faint">{SITE.city}</span>
-      </p>
-      <p className="mt-5 max-w-[16rem] font-sans text-[0.6rem] uppercase leading-relaxed tracking-[0.18em] text-ink-faint">
-        {SITE.seminar}
-      </p>
     </div>
   )
 }
@@ -638,17 +623,13 @@ export function BookSpread({ onClose, onStart }: { onClose: () => void; onStart:
                     <span className="pointer-events-none absolute inset-5 border-[3px] border-[#d9a843]/85" />
                     <span className="pointer-events-none absolute inset-[1.75rem] border border-[#d9a843]/55" />
                     <div className="relative z-[1] px-6 text-center">
-                      <p className="font-sans text-[0.62rem] uppercase tracking-[0.32em] text-[#d9a843]">
-                        Diario de campo
-                      </p>
                       <h3 className="mt-3 font-heading text-[1.8rem] font-semibold leading-[1.05] text-[#eccd8a]">
-                        Diario Lúdico
+                        {PRESENTATION.title}
                       </h3>
                       <p className="mt-2 font-heading text-sm italic text-[#d9a843]/90">
-                        Habitar la escuela desde la lúdica
+                        {PRESENTATION.kicker}
                       </p>
                       <span className="my-4 inline-block h-px w-10 bg-[#d9a843]/70" />
-                      <p className="font-hand text-xl text-[#f4ddae]">Santiago Londoño</p>
                       <p className="mt-5 font-sans text-[0.56rem] uppercase tracking-[0.28em] text-[#d9a843]/80">
                         Comienza el recorrido
                       </p>

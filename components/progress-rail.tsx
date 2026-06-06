@@ -6,14 +6,14 @@ import { DIARY } from '@/data/diario'
 import { cn } from '@/lib/utils'
 
 const ITEMS = [
-  { id: 'abre', short: '00', label: 'El libro', accent: 'var(--ochre)' },
+  { id: 'abre', short: '00', label: 'Presentación', accent: 'var(--ochre)' },
   ...DIARY.map((d) => ({
     id: d.id,
     short: String(d.index).padStart(2, '0'),
-    label: d.label,
+    label: d.heading,
     accent: d.accent,
   })),
-  { id: 'reflexion', short: '06', label: 'Reflexión', accent: 'var(--dusk)' },
+  { id: 'reflexion', short: '06', label: 'Reflexión: La lúdica como resistencia', accent: 'var(--dusk)' },
 ]
 
 /**

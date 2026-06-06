@@ -13,7 +13,7 @@ const W = 2.5
 const H = 3.95
 const T = 0.55
 
-/** A canvas-drawn cover face: gold border, emblem, title and the author name. */
+/** A canvas-drawn cover face with only the title text from the PDF. */
 function useCoverTexture() {
   return useMemo(() => {
     if (typeof document === 'undefined') return null
@@ -62,22 +62,14 @@ function useCoverTexture() {
     ctx.fillStyle = '#2a1a08'
     ctx.fillRect(w / 2 - 3.5, ey - 44, 7, 92)
 
-    // eyebrow
-    try { ctx.letterSpacing = '7px' } catch {}
-    ctx.fillStyle = gold
-    ctx.font = '600 22px Georgia, "Times New Roman", serif'
-    ctx.fillText('DIARIO DE CAMPO', w / 2, 512)
-    try { ctx.letterSpacing = '0px' } catch {}
-
     // title
-    ctx.fillStyle = goldSoft
-    ctx.font = '600 80px Georgia, "Times New Roman", serif'
-    ctx.fillText('Diario Lúdico', w / 2, 592)
-
-    // tagline
     ctx.fillStyle = gold
-    ctx.font = 'italic 30px Georgia, "Times New Roman", serif'
-    ctx.fillText('Habitar la escuela desde la lúdica', w / 2, 648)
+    ctx.font = '600 34px Georgia, "Times New Roman", serif'
+    ctx.fillText('Presentación', w / 2, 520)
+
+    ctx.fillStyle = goldSoft
+    ctx.font = '600 58px Georgia, "Times New Roman", serif'
+    ctx.fillText('Diario Lúdico:', w / 2, 604)
 
     // rule
     ctx.strokeStyle = gold
@@ -86,16 +78,6 @@ function useCoverTexture() {
     ctx.moveTo(w / 2 - 50, 740)
     ctx.lineTo(w / 2 + 50, 740)
     ctx.stroke()
-
-    // author
-    ctx.fillStyle = '#f4ddae'
-    ctx.font = '600 56px Georgia, "Times New Roman", serif'
-    ctx.fillText('Santiago Londoño', w / 2, 806)
-    try { ctx.letterSpacing = '4px' } catch {}
-    ctx.fillStyle = gold
-    ctx.font = '600 20px Georgia, "Times New Roman", serif'
-    ctx.fillText('DOCENTE · LENGUA Y FILOSOFÍA', w / 2, 858)
-    try { ctx.letterSpacing = '0px' } catch {}
 
     const tex = new THREE.CanvasTexture(cv)
     tex.anisotropy = 8

@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   ),
-  title: 'Diario Lúdico · Habitar la escuela desde la lúdica',
+  title: 'Diario Lúdico:',
   description:
-    'Diario de campo de Santiago Londoño, docente de la Institución Educativa Rodrigo Correa Palacio (Medellín), para el Seminario Lúdica y Aprendizaje Experiencial: cinco jornadas para recorrer la escuela desde la creación, el diálogo, la convivencia, el asombro y el sentido.',
+    'Mi nombre es Santiago Londoño. Soy docente de lengua castellana y filosofía en una institución educativa pública de la ciudad de Medellín.',
   authors: [{ name: 'Santiago Londoño' }],
   keywords: [
     'educación',
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     'lectura crítica',
   ],
   openGraph: {
-    title: 'Diario Lúdico · Habitar la escuela desde la lúdica',
+    title: 'Diario Lúdico:',
     description:
-      'Un diario de campo pedagógico convertido en experiencia editorial inmersiva.',
+      'Mi nombre es Santiago Londoño. Soy docente de lengua castellana y filosofía en una institución educativa pública de la ciudad de Medellín.',
     type: 'article',
     locale: 'es_CO',
   },
