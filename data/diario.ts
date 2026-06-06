@@ -71,8 +71,8 @@ export const SITE = {
   city: 'Medellín',
   location: 'Institución Educativa Rodrigo Correa Palacio · Medellín',
   program: 'Maestría en Lúdica y Aprendizaje Experiencial',
-  seminar: 'Seminario de la Maestría en Lúdica y Aprendizaje Experiencial',
-  credit: 'Diario de campo · Seminario de la Maestría en Lúdica y Aprendizaje Experiencial',
+  seminar: 'Seminario Lúdica y Aprendizaje Experiencial',
+  credit: 'Diario de campo · Seminario Lúdica y Aprendizaje Experiencial',
   meta: 'Cinco jornadas · Una semana de campo',
 } as const
 

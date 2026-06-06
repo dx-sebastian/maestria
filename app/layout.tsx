@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   ),
   title: 'Diario Lúdico · Habitar la escuela desde la lúdica',
   description:
-    'Diario de campo de Santiago Londoño, docente de la Institución Educativa Rodrigo Correa Palacio (Medellín), para el Seminario de la Maestría en Lúdica y Aprendizaje Experiencial: cinco jornadas para recorrer la escuela desde la creación, el diálogo, la convivencia, el asombro y el sentido.',
+    'Diario de campo de Santiago Londoño, docente de la Institución Educativa Rodrigo Correa Palacio (Medellín), para el Seminario Lúdica y Aprendizaje Experiencial: cinco jornadas para recorrer la escuela desde la creación, el diálogo, la convivencia, el asombro y el sentido.',
   authors: [{ name: 'Santiago Londoño' }],
   keywords: [
     'educación',
