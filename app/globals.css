@@ -1,0 +1,286 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Type system — four roles, clearly separated */
+  --font-heading: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+  --font-body: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-caveat), 'Segoe Script', cursive;
+  --font-mono: ui-monospace, monospace;
+
+  /* Core surface + ink */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Narrative palette tokens */
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-paper-raised: var(--paper-raised);
+  --color-amber: var(--amber);
+  --color-ochre: var(--ochre);
+  --color-butterfly: var(--butterfly);
+  --color-slate: var(--slate);
+  --color-slate-soft: var(--slate-soft);
+  --color-moss: var(--moss);
+  --color-moss-soft: var(--moss-soft);
+  --color-jade: var(--jade);
+  --color-dusk: var(--dusk);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.85);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 2.6);
+
+  /* Editorial reading measure */
+  --measure: 38rem;
+  --measure-wide: 46rem;
+}
+
+:root {
+  /* Field-journal paper palette (light, primary) */
+  --paper: oklch(0.962 0.016 86);
+  --paper-deep: oklch(0.915 0.027 82);
+  --paper-raised: oklch(0.975 0.012 88);
+
+  --ink: oklch(0.255 0.018 58);
+  --ink-soft: oklch(0.435 0.022 60);
+  --ink-faint: oklch(0.6 0.02 62);
+
+  /* Day accents — earthy, museum-restrained, never garish */
+  --ochre: oklch(0.595 0.118 52); /* lunes — terracota */
+  --amber: oklch(0.735 0.13 70); /* secundario cálido */
+  --butterfly: oklch(0.83 0.152 91); /* amarillo García Márquez */
+  --slate: oklch(0.52 0.062 248); /* martes — azul razonado */
+  --slate-soft: oklch(0.64 0.05 245);
+  --moss: oklch(0.515 0.062 152); /* miércoles — verde pasillo */
+  --moss-soft: oklch(0.63 0.06 150);
+  --jade: oklch(0.49 0.088 162); /* jueves — follaje */
+  --dusk: oklch(0.585 0.108 48); /* viernes — bronce de atardecer */
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper-raised);
+  --card-foreground: var(--ink);
+  --primary: var(--ochre);
+  --primary-foreground: oklch(0.98 0.01 88);
+  --muted: oklch(0.91 0.024 82);
+  --muted-foreground: var(--ink-soft);
+  --border: oklch(0.82 0.028 76);
+  --ring: var(--ochre);
+  --radius: 0.7rem;
+
+  --shadow-page: 0 1px 2px oklch(0.3 0.03 60 / 0.04),
+    0 12px 30px -12px oklch(0.3 0.03 60 / 0.16),
+    0 40px 80px -50px oklch(0.3 0.03 60 / 0.4);
+}
+
+.dark {
+  /* Dusk classroom palette (kept for completeness) */
+  --paper: oklch(0.255 0.018 70);
+  --paper-deep: oklch(0.2 0.016 70);
+  --paper-raised: oklch(0.295 0.018 70);
+  --ink: oklch(0.93 0.018 85);
+  --ink-soft: oklch(0.76 0.02 80);
+  --ink-faint: oklch(0.6 0.02 78);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper-raised);
+  --border: oklch(1 0 0 / 12%);
+  --muted: oklch(0.32 0.02 70);
+  --muted-foreground: var(--ink-soft);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    /* Account for nothing fixed at top; sections manage their own scroll-margin */
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklch, var(--amber) 38%, transparent);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar chrome on the experience while keeping scroll */
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklch, var(--ink) 25%, transparent) transparent;
+  }
+}
+
+@layer components {
+  /* Centered reading column with editorial measure */
+  .reading {
+    font-family: var(--font-body);
+    font-size: 1.225rem;
+    line-height: 1.78;
+    letter-spacing: 0.001em;
+    color: var(--ink-soft);
+  }
+  .reading p + p {
+    margin-top: 1.45rem;
+  }
+  .reading strong,
+  .reading b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Reading column over a dark, atmospheric day background */
+  .reading-dark {
+    color: oklch(0.93 0.02 86 / 0.9);
+  }
+  .reading-dark strong,
+  .reading-dark b {
+    color: var(--paper);
+  }
+
+  /* Small-caps eyebrow / kicker label */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+  }
+}
+
+@layer utilities {
+  /* Subtle paper grain via pseudo element so it never hurts legibility */
+  .paper-grain {
+    position: relative;
+  }
+  .paper-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--paper-texture);
+    background-size: 480px;
+    opacity: 0.12;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .dark .paper-grain::before {
+    mix-blend-mode: soft-light;
+    opacity: 0.1;
+  }
+
+  /* Ruled notebook lines */
+  .ink-rule {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 37px,
+      color-mix(in oklch, var(--ink-soft) 16%, transparent) 38px
+    );
+  }
+
+  /* A faint cartographic dot grid */
+  .dot-grid {
+    background-image: radial-gradient(
+      color-mix(in oklch, var(--ink) 12%, transparent) 1px,
+      transparent 1.4px
+    );
+    background-size: 26px 26px;
+  }
+
+  .text-shadow-soft {
+    text-shadow: 0 1px 2px color-mix(in oklch, var(--ink) 22%, transparent);
+  }
+  .text-shadow-deep {
+    text-shadow: 0 2px 18px color-mix(in oklch, #000 45%, transparent);
+  }
+
+  /* Drop cap for the opening of a chapter */
+  .dropcap::first-letter {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    float: left;
+    font-size: 4.1em;
+    line-height: 0.78;
+    padding: 0.06em 0.1em 0 0;
+    color: var(--accent, var(--ochre));
+  }
+  .dropcap-sm::first-letter {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    float: left;
+    font-size: 3em;
+    line-height: 0.8;
+    padding: 0.05em 0.09em 0 0;
+    color: var(--accent, var(--ochre));
+  }
+
+  /* Hairline divider */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in oklch, var(--ink) 28%, transparent),
+      transparent
+    );
+  }
+
+  .will-fade {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .will-fade {
+    opacity: 1 !important;
+  }
+}
