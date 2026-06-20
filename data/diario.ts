@@ -183,6 +183,23 @@ export const REFLECTION = {
   ],
 } as const
 
+export const LEARNINGS = {
+  kicker: 'Tras el seminario',
+  subtitle: 'La lúdica como territorio de encuentro y esperanza',
+  title: 'Aprendizajes luego del seminario',
+  paragraphs: [
+    'La escritura de este diario me permitió realizar un ejercicio de observación que transformó mi manera de comprender la lúdica y su presencia en la vida cotidiana. Durante una semana recorrí los espacios de la escuela con una mirada distinta, más atenta a los gestos, a las palabras, a los silencios, a los encuentros y a las pequeñas experiencias que hacen posible la construcción de humanidad en medio de las exigencias de la vida escolar. Cada jornada me reveló una faceta diferente de la dimensión lúdica como lo son la creatividad que emerge en la construcción de relatos, el movimiento de las ideas durante un debate, la cooperación necesaria para resolver un desafío colectivo, la imaginación que habita la literatura y la reflexión que acompaña la búsqueda de sentido.',
+    'Al llegar al seminario de Lúdica y Aprendizaje, las experiencias que registré en el diario empezaron a encontrar nuevas resonancias. Las lecturas, las conversaciones con los compañeros, las dinámicas propuestas y los ejercicios artísticos ampliaron el horizonte de comprensión construido durante la semana. En este sentido, la lúdica adquirió una profundidad distinta; dejó de aparecer únicamente como una estrategia pedagógica para revelarse como una dimensión constitutiva de la existencia humana, una fuerza que atraviesa la cultura, la educación, el arte, la convivencia y la construcción de subjetividad.',
+    'Las discusiones del seminario permitieron reconocer el juego como una experiencia formativa que moviliza al sujeto en su totalidad. En el juego participan el cuerpo, la imaginación, la emoción, el pensamiento y el vínculo con los otros. Allí comprendí que muchas de las experiencias vividas durante la semana encontraban su sentido precisamente en esa capacidad del juego para convocar la totalidad de la experiencia humana.',
+    'Uno de los aprendizajes más valiosos surgió alrededor de la relación entre lúdica y humanidad. Las lecturas del módulo señalan que la alegría constituye una forma de resistencia frente a contextos atravesados por el cansancio, la desesperanza y la fragmentación de los vínculos. Esta idea me invitó a recordar los contextos de muchos de mis estudiantes, marcados por dificultades sociales, económicas y familiares. En medio de esas realidades, la imaginación, la risa, el diálogo y la creación colectiva pueden establecerse como pequeñas victorias cotidianas, como expresiones de una vitalidad que insiste en abrir caminos hacia otros mundos posibles.',
+    'Caminar, jugar, representar, crear, conversar y reír constituyen formas de conocimiento que enriquecen la experiencia formativa. Cada dinámica vivida durante el encuentro con la profesora Yolanda Pino confirmó que el aprendizaje florece cuando el sujeto participa activamente, cuando encuentra placer en la exploración y cuando descubre que el conocimiento puede experimentarse con todo el cuerpo.',
+    'A medida que avanzaban las discusiones comprendí que la lúdica posee una profunda dimensión ética. En ella habitan el reconocimiento del otro, la escucha, la cooperación y la construcción de comunidad. Quizá el aprendizaje más significativo de este proceso radica en comprender que la educación encuentra una de sus mayores riquezas en la capacidad de generar experiencias que permitan a las personas imaginar, crear y soñar. Pues parafraseando los documentos leidos, juega quien todavía alberga posibilidades nuevas de vida. En esta perspectiva, la lúdica se sitúa como una expresión de esperanza, una disposición a creer que cada experiencia humana contiene la posibilidad de transformarse y de producir nuevas formas de habitar el mundo.',
+  ],
+  closing:
+    'Terminé la jornada del seminario con el corazón en la mano, con mucha esperanza, con ganas de dar clases, innovar, cambiar y divertirme, hoy creo un poco más en la educación como resistencia ante el afán del mundo, como puente entre el amor y el conocimiento.',
+  signature: 'Santiago Londoño',
+} as const
+
 export function getDay(id: DayId): DiaryDay {
   return DIARY.find((d) => d.id === id) ?? DIARY[0]
 }

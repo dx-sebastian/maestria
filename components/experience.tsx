@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react'
 import { BookGateway } from '@/components/book-gateway'
 import { DayChapter } from '@/components/day-chapter'
 import { Reflection } from '@/components/reflection'
+import { Learnings } from '@/components/learnings'
 import { Colophon } from '@/components/colophon'
 import { ProgressRail } from '@/components/progress-rail'
 import { DayFooter } from '@/components/day-footer'
@@ -36,6 +37,7 @@ export function Experience() {
             <DayChapter key={day.id} day={day} />
           ))}
           <Reflection />
+          <Learnings />
           <Colophon />
           <DayFooter />
         </>
